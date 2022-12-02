@@ -1,17 +1,21 @@
 import React from "react";
-
+import { Link  } from "react-router-dom";
 
 const Navbar = () => {
+
   return (
     <div className="flex items-center justify-between p-3 z-50 w-full absolute">
-        <h1 className="text-red-600 text-2xl font-bold cursor-pointer">
+      <Link to="/">
+        <h1 className="drop-shadow-lg text-red-600 text-2xl font-bold cursor-pointer">
           Ez 電影
         </h1>
+      </Link>
       <div>
-          <button className="pr-3">登入</button>
-          <button className="bg-red-500 text-white px-3 py-2 rounded">
-            註冊
-          </button>
+        <Link to='/favorites'>
+        <button className="bg-red-500 text-white px-3 py-2 rounded">
+          最愛電影
+        </button>
+        </Link>
       </div>
     </div>
   );

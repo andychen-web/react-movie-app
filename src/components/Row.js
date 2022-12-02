@@ -5,28 +5,32 @@ import { BsCaretLeftFill, BsCaretRightFill } from "react-icons/bs";
 
 const Row = ({ title, fetchURL, rowID }) => {
   const [movies, setMovies] = useState([]);
-
   // 提供中小型裝置透過點擊icon使用slide功能
   const slideLeft = () => {
     // Scroll the contents of "slide" TO 300 pixels horizontally
-    let slider = document.getElementById('slider'+rowID);
+    let slider = document.getElementById("slider" + rowID);
     slider.scrollLeft -= 300;
   };
   const slideRight = () => {
-    let slider = document.getElementById('slider'+rowID);
+    let slider = document.getElementById("slider" + rowID);
     slider.scrollLeft += 300;
   };
 
   useEffect(() => {
-    axios.get(fetchURL).then((response) => {
-      setMovies(response.data.results);
-    });
+    axios
+      .get(fetchURL)
+      .then((response) => {
+        setMovies(response.data.results);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   }, [fetchURL]);
 
   return (
     <>
       <h1>{title}</h1>
-      {/* 使用group 根據父元素狀態改變子元素樣式 */}
+      {/* 使用Group 根據父元素狀態改變子元素樣式 */}
       <div className="flex relative group">
         <BsCaretLeftFill
           onClick={slideLeft}
@@ -34,12 +38,11 @@ const Row = ({ title, fetchURL, rowID }) => {
           size={30}
         />
         <div
-          id={'slider'+rowID}
+          id={"slider" + rowID}
           className="w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide"
         >
-        {/* array.map((currElement, index)*/}
-          {movies.map((movie,index) => {
-            return <Movie index={index} movie={movie} />
+          {movies.map((movie,id) => {
+            return <Movie key={id} movie={movie} />;
           })}
         </div>
         <BsCaretRightFill

@@ -36,10 +36,6 @@ const Main = () => {
         <div className="justify-start w-3/4 ml-4 absolute">
           <h1 className="text-xl md:text-3xl pb-2">{movie?.title}</h1>
           <div className="pb-2">
-            <button className="p-2 bg-white text-black rounded ">播放</button>
-            <button className="p-2 ml-2 bg-black text-white rounded border-white border-2">
-              加入最愛
-            </button>
           </div>
           <p className="pb-2 text-gray-400">上映日 {movie?.release_date}</p>
           <p className="pb-2 w-full">
