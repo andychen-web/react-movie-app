@@ -12,9 +12,9 @@
 * React Hooks
 * React-Router
 * Tailwind CSS
-* LocalStorage
+* LocalStorage 用於儲存最愛電影
 * [TMDb API](https://developers.themoviedb.org/3/getting-started/introduction)
 
 ## Plugins
-* [axios](https://github.com/axios/axios)
-* [firebase](https://www.npmjs.com/package/firebase)
+* [axios](https://github.com/axios/axios) 串接API
+* [firebase](https://www.npmjs.com/package/firebase) 部署
