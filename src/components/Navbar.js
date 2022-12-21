@@ -10,13 +10,11 @@ const Navbar = () => {
           Ez 電影
         </h1>
       </Link>
-      <div>
-        <Link to='/favorites'>
+      <Link to="/favorites">
         <button className="bg-red-500 text-white px-3 py-2 rounded">
           最愛電影
         </button>
-        </Link>
-      </div>
+      </Link>
     </div>
   );
 };
