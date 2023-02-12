@@ -5,9 +5,9 @@ import { BsCaretLeftFill, BsCaretRightFill } from "react-icons/bs";
 
 const Row = ({ title, fetchURL, rowID }) => {
   const [movies, setMovies] = useState([]);
+
   // 提供中小型裝置透過點擊icon使用slide功能
   const slideLeft = () => {
-    // Scroll the contents of "slide" TO 300 pixels horizontally
     let slider = document.getElementById("slider" + rowID);
     slider.scrollLeft -= 300;
   };
@@ -16,16 +16,20 @@ const Row = ({ title, fetchURL, rowID }) => {
     slider.scrollLeft += 300;
   };
 
+  // 使用axios套件發送API請求，獲取資料。若請求成功，使用 response.data.results 取得回傳的結果，再使用 .filter 函式來篩選出有電影海報的資料顯示，最後使用 setMovies 函式更新狀態。
   useEffect(() => {
     axios
       .get(fetchURL)
       .then((response) => {
-        setMovies(response.data.results);
+        setMovies(
+          response.data.results.filter((movie) => movie.backdrop_path !== null)
+        );
       })
       .catch((error) => {
         console.log(error.message);
       });
   }, [fetchURL]);
+  // if only log error not error.message,you will only see the whole error object, which contains more information than needed.
 
   return (
     <>
@@ -41,7 +45,7 @@ const Row = ({ title, fetchURL, rowID }) => {
           id={"slider" + rowID}
           className="w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide"
         >
-          {movies.map((movie,id) => {
+          {movies.map((movie, id) => {
             return <Movie key={id} movie={movie} />;
           })}
         </div>

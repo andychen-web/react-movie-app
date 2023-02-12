@@ -16,11 +16,11 @@ const Movie = ({ movie }) => {
       localStorage.removeItem(`movie ${movieIndex}`);
     }
   };
-
   return (
     <>
       <div className="h-auto w-[150px] md:w-[200px] lg:w-[250px] inline-flex cursor-pointer relative p-2">
         <img
+          className="h-[120px] w-[210px] object-cover"
           src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
           alt={movie.title}
         />

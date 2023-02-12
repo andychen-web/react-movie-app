@@ -11,9 +11,9 @@ const Main = () => {
   const truncateStr = (str, num) => {
     if (str?.length > num) {
       // 從第一個字切到最後一個英文字的空格位置
-      return str?.slice(0,str?.lastIndexOf(" ",num))+"..."
+      return str?.slice(0, str?.lastIndexOf(" ", num)) + "...";
     } else {
-      return str
+      return str;
     }
   };
   // 設定每次網頁reload都利用axios提出API請求
@@ -35,8 +35,7 @@ const Main = () => {
         ></img>
         <div className="justify-start w-3/4 ml-4 absolute">
           <h1 className="text-xl md:text-3xl pb-2">{movie?.title}</h1>
-          <div className="pb-2">
-          </div>
+          <div className="pb-2"></div>
           <p className="pb-2 text-gray-400">上映日 {movie?.release_date}</p>
           <p className="pb-2 w-full">
             簡介:{truncateStr(movie?.overview, 150)}
@@ -44,7 +43,7 @@ const Main = () => {
         </div>
       </div>
     </div>
-    // 
+    //
   );
 };
 
