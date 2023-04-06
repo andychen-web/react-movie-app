@@ -1,4 +1,4 @@
-const key = "f171dd4213623fa6b4d829a7e3dbda5d";
+const key = process.env.REACT_APP_IMDB_API_KEY
 
 // 定義request endpoints
 const requests = {
