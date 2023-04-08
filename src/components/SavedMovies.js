@@ -6,7 +6,7 @@ const SavedMovies = ({ movieKey, onDelete }) => {
 
   return (
     <>
-      <div className="md:w-2/3 pt-5 px-2 text-xs sm:text-sm self-end">
+      <div className="md:w-2/3 pt-5 px-2 text-xs sm:text-sm self-center">
         <div className="flex">
           {parsedItem.movie.title}
           <svg
@@ -27,6 +27,7 @@ const SavedMovies = ({ movieKey, onDelete }) => {
           </svg>
         </div>
         <img
+          className="rounded"
           src={`https://image.tmdb.org/t/p/w500/${parsedItem.movie.backdrop_path}`}
           alt="favorite-movies"
         />
