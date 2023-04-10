@@ -8,7 +8,16 @@ const Movie = ({ movie }) => {
 
   const saveShow = () => {
     setLike(!like);
-    if (!like) {
+    // 檢查movie是否已經存在localStorage，把一個個object取出
+    const savedMovies = Object.values(localStorage).map(
+      (item) => JSON.parse(item).movie
+    );
+    // 檢查movie和saved movie id是否重複
+    const isMovieExists = savedMovies.some(
+      (savedMovie) => savedMovie.id === movie.id
+    );
+
+    if (!like && !isMovieExists) {
       localStorage.setItem(`movie ${movieIndex}`, JSON.stringify({ movie }));
       movieIndex++;
     } else if (like) {
