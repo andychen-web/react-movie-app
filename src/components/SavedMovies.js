@@ -5,14 +5,18 @@ const SavedMovies = ({ movieKey, onDelete }) => {
   const parsedItem = JSON.parse(item);
 
   return (
-    <>
-      <div className="md:w-2/3 pt-5 px-2 text-xs sm:text-sm self-center">
-        <div className="flex">
+      <div className="md:w-2/3 pt-12 px-2 text-xs sm:text-sm self-start">
+        <img
+          className="rounded"
+          src={`https://image.tmdb.org/t/p/w500/${parsedItem.movie.backdrop_path}`}
+          alt="favorite-movies"
+        />
+        <div className="flex pt-3">
           {parsedItem.movie.title}
           <svg
             cursor="pointer"
             onClick={() => onDelete(movieKey)}
-            className="h-4 w-4 text-black-500"
+            className="h-5 w-5 text-black-500"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -26,13 +30,7 @@ const SavedMovies = ({ movieKey, onDelete }) => {
             <line x1="14" y1="11" x2="14" y2="17" />
           </svg>
         </div>
-        <img
-          className="rounded"
-          src={`https://image.tmdb.org/t/p/w500/${parsedItem.movie.backdrop_path}`}
-          alt="favorite-movies"
-        />
       </div>
-    </>
   );
 };
 
