@@ -1,9 +1,20 @@
 import { useEffect, useState } from "react";
 import SavedMovies from "../components/SavedMovies";
+import { BsCaretLeftFill, BsCaretRightFill } from "react-icons/bs";
 
 const Favorites = () => {
   const [keys, setKeys] = useState([]);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const favoriteMovies = Object.keys(localStorage);
+
+  const slideLeft = () => {
+    let slider = document.getElementById("slider");
+    slider.scrollLeft -= 250;
+  };
+  const slideRight = () => {
+    let slider = document.getElementById("slider");
+    slider.scrollLeft += 250;
+  };
 
   useEffect(() => {
     const keys = Object.keys(localStorage);
@@ -42,14 +53,42 @@ const Favorites = () => {
           ")",
       }}
     >
-      <div className="w-full sm:h-[450px] absolute top-0 left-0 flex items-center justify-center pt-16">
-        <div className="bg-black/70 rounded md:w-2/3 w-4/5 sm:h-4/5 sm:min-h-[350px] min-h-screen flex justify-center">
+      <div className="w-full sm:h-[450px] absolute sm:top-5 top-12 left-0 flex items-center justify-center pt-16 sm:pt-0">
+        <div className="bg-black/70 rounded md:w-2/3 w-10/12 sm:h-4/5 min-h-[350px] pb-8 flex justify-center">
           <div className="text-center py-4 text-lg absolute">最愛電影</div>
-          {/* Saved Movie */}
-          <div className="flex flex-col justify-center sm:max-h-full max-h-5 sm:flex-row pt-5">
-            {Object.keys(localStorage).map((key) => (
-              <SavedMovies movieKey={key} key={key} onDelete={handleDelete} />
-            ))}
+          <div className="flex relative group pt-5">
+            <BsCaretLeftFill
+              onClick={slideLeft}
+              className={`bg-white rounded-full cursor-pointer opacity-50 hover:opacity-100 absolute top-28 left-[-5px] z-10 text-black hidden ${
+                favoriteMovies.length === 0
+                  ? "group-hover:hidden"
+                  : "group-hover:block"
+              }`}
+              size={30}
+            />
+            <div
+              id={"slider"}
+              className="w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide"
+            >
+              <div className="h-auto max-w-[260px] inline-flex relative p-2 pr-[50px]">
+                {Object.keys(localStorage).map((key) => (
+                  <SavedMovies
+                    movieKey={key}
+                    key={key}
+                    onDelete={handleDelete}
+                  />
+                ))}
+              </div>
+            </div>
+            <BsCaretRightFill
+              onClick={slideRight}
+              className={`bg-white rounded-full cursor-pointer opacity-50 hover:opacity-100 absolute top-28 right-[-5px] z-10 text-black hidden ${
+                favoriteMovies.length === 0
+                  ? "group-hover:hidden"
+                  : "group-hover:block"
+              }`}
+              size={30}
+            />
           </div>
         </div>
       </div>
