@@ -1,5 +1,5 @@
 ## React App 串接 TMDB API
-[Demo](https://ezmovie-react-1.web.app/)  
+[線上觀看連結](https://ezmovie-react-1.web.app/)  
 此為本人 React 練習 project，環境使用 create-react-app 建置。
 
 ## 簡介
