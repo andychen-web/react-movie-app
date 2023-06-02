@@ -53,7 +53,7 @@ const Favorites = () => {
           ")",
       }}
     >
-      <div className="w-full sm:h-[450px] absolute sm:top-5 top-12 left-0 flex items-center justify-center pt-16 sm:pt-0">
+      <div className="w-full sm:h-[450px] absolute top-12 left-0 flex items-center justify-center sm:pt-0">
         <div className="bg-black/70 rounded md:w-2/3 w-10/12 sm:h-4/5 min-h-[350px] pb-8 flex justify-center">
           <div className="text-center py-4 text-lg absolute">最愛電影</div>
           <div className="flex relative group pt-5">
