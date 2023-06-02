@@ -43,8 +43,8 @@ const Favorites = () => {
 
   return (
     <div
-      className="w-auto h-[800px] sm:h-[500px] bg-cover bg-repeat"
-      style={{
+    className="w-auto h-[630px]  xl:h-[940px] bg-cover bg-repeat"
+    style={{
         backgroundImage:
           "url(" +
           (isSmallScreen
@@ -54,7 +54,7 @@ const Favorites = () => {
       }}
     >
       <div className="w-full sm:h-[450px] absolute top-12 left-0 flex items-center justify-center sm:pt-0">
-        <div className="bg-black/70 rounded md:w-2/3 w-10/12 sm:h-4/5 min-h-[350px] pb-8 flex justify-center">
+      <div className="bg-black/70 rounded md:w-2/3 w-10/12 min-h-[300px] md:h-[450px] lg:h-[530px] pb-8 flex justify-center">
           <div className="text-center py-4 text-lg absolute">最愛電影</div>
           <div className="flex relative group pt-5">
             <BsCaretLeftFill
