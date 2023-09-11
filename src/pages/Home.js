@@ -6,8 +6,8 @@ import requests from "../Requests";
 const rows = [
   { id: 1, title: "最受歡迎", fetchURL: requests.requestPopular },
   { id: 2, title: "評分最高", fetchURL: requests.requestTopRated },
-  { id: 3, title: "最熱門", fetchURL: requests.requestTrending },
-  { id: 4, title: "恐怖電影", fetchURL: requests.requestHorror },
+  { id: 3, title: "動畫電影", fetchURL: requests.requestAnime },
+  { id: 4, title: "動作電影", fetchURL: requests.requestAction },
   { id: 5, title: "即將上映", fetchURL: requests.requestUpcoming },
 ];
 
