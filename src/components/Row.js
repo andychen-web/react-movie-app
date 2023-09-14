@@ -29,7 +29,6 @@ const Row = ({ title, fetchURL, rowID }) => {
         console.log(error.message);
       });
   }, [fetchURL]);
-  // if only log error not error.message,you will only see the whole error object, which contains more information than needed.
 
   return (
     <>
