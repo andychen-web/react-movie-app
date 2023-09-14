@@ -1,5 +1,5 @@
 ## React App 串接 TMDB API
-[線上觀看連結](https://ez-movie-private.vercel.app/)  
+[線上觀看連結](https://react-movie-app-topaz.vercel.app/)  
 
 此為本人 React 練習 project，環境使用 create-react-app 建置。
 
