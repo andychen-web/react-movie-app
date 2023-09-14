@@ -5,9 +5,6 @@ import requests from "../Requests";
 const Main = () => {
   // 設定顯示電影的state 初始值為空陣列
   const [movies, setMovies] = useState([]);
-  // 用 Math.floor() & Math.random() 隨機選出索引值，再用索引值來取得元素.
-  const movie = movies[Math.floor(Math.random() * movies.length)];
-
   const truncateStr = (str, num) => {
     if (str?.length > num) {
       // 從第一個字切到最後一個英文字的空格位置
@@ -16,13 +13,22 @@ const Main = () => {
       return str;
     }
   };
-  // 設定每次網頁reload都利用axios提出API請求
-  useEffect(() => {
-    axios.get(requests.requestPopular).then((response) => {
-      setMovies(response.data.results);
-    });
-  }, []);
 
+  const moviesExceptHorror = movies.filter(
+    (movie) => !movie.genre_ids.includes(27)
+  );
+  const movie =
+    moviesExceptHorror[Math.floor(Math.random() * moviesExceptHorror.length)];
+  useEffect(() => {
+    axios
+      .get(requests.requestPopular)
+      .then((response) => {
+        setMovies(response.data.results);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <div className="w-full h-[560px] text-white">
       <div className="w-full h-full flex items-center">
@@ -43,7 +49,6 @@ const Main = () => {
         </div>
       </div>
     </div>
-    //
   );
 };
 
