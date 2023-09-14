@@ -14,8 +14,8 @@
 * React-Router
 * Tailwind CSS
 * LocalStorage 用於儲存最愛電影
+* [axios](https://github.com/axios/axios) 串接API
 * [TMDb API](https://developers.themoviedb.org/3/getting-started/introduction)
 
-## Plugins
-* [axios](https://github.com/axios/axios) 串接API
-* [firebase](https://www.npmjs.com/package/firebase) 部署
+## Deploy
+* 使用vercel 部署
