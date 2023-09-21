@@ -10,7 +10,7 @@
 
 ## 使用技術
 * React
-* React Hooks
+* React Hooks(useState,useEffect,useContext)
 * React-Router
 * Tailwind CSS
 * LocalStorage 用於儲存最愛電影
