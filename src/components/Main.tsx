@@ -1,11 +1,20 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import requests from "../Requests";
+export type MovieType = {
+  id: string;
+  title: string;
+  genre_ids: number[];
+  overview: string;
+  release_date: string;
+  poster_path: string;
+  backdrop_path: string;
+};
 
 const Main = () => {
   // 設定顯示電影的state 初始值為空陣列
-  const [movies, setMovies] = useState([]);
-  const truncateStr = (str, num) => {
+  const [movies, setMovies] = useState<MovieType[]>([]);
+  const truncateStr = (str: string, num: number) => {
     if (str?.length > num) {
       // 從第一個字切到最後一個英文字的空格位置
       return str?.slice(0, str?.lastIndexOf(" ", num)) + "...";
@@ -13,7 +22,6 @@ const Main = () => {
       return str;
     }
   };
-
   const moviesExceptHorror = movies.filter(
     (movie) => !movie.genre_ids.includes(27)
   );
