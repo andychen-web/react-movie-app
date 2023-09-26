@@ -12,6 +12,7 @@
 * React
 * React Hooks(useState,useEffect,useContext)
 * React-Router
+* Typescript
 * Tailwind CSS
 * LocalStorage 用於儲存最愛電影
 * [axios](https://github.com/axios/axios) 串接API
