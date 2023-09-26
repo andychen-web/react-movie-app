@@ -1,14 +1,21 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { FavoritesContext } from "../context/FavoritesContext";
 import { FaHeart } from "react-icons/fa";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+type Favorite = {
+  id: string;
+  backdrop_path: string;
+  title: string;
+  url: string;
+};
 const Favorites = () => {
   const [favorites, setFavorites] = useContext(FavoritesContext);
   const [currentIndex, setCurrentIndex] = useState(0);
   const navigate = useNavigate();
-  const removeFavorites = (favorite) => {
-    const newLikeState = JSON.parse(localStorage.getItem(favorite.id)) || false; // get like state from local storage
+  const removeFavorites = (favorite: Favorite) => {
+    const storedItem = localStorage.getItem(favorite.id);
+    const newLikeState = storedItem ? JSON.parse(storedItem) : false;
     localStorage.setItem(favorite.id, JSON.stringify(!newLikeState)); // toggle like state in local storage
     const newFavorites = favorites.filter((item) => item.id !== favorite.id); // remove favorite from array
     setFavorites(newFavorites);
@@ -21,7 +28,8 @@ const Favorites = () => {
     const imageURL = favorite.backdrop_path;
     return {
       id: favorite.id,
-      title: favorite.original_title,
+      backdrop_path: favorite.backdrop_path,
+      title: favorite.title,
       url: `https://image.tmdb.org/t/p/w500/${imageURL}`,
     };
   });

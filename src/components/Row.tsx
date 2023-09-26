@@ -2,18 +2,30 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Movie from "./Movie";
 import { BsCaretLeftFill, BsCaretRightFill } from "react-icons/bs";
-
-const Row = ({ title, fetchURL, rowID }) => {
-  const [movies, setMovies] = useState([]);
+import { MovieType } from "./Main";
+export type MoviesProp = {
+  movie: MovieType;
+};
+type RowProps = {
+  title: string;
+  fetchURL: string;
+  rowID: number;
+};
+const Row = ({ title, fetchURL, rowID }: RowProps) => {
+  const [movies, setMovies] = useState<MovieType[]>([]);
 
   // 提供中小型裝置透過點擊icon使用slide功能
   const slideLeft = () => {
     let slider = document.getElementById("slider" + rowID);
-    slider.scrollLeft -= 300;
+    if (slider !== null) {
+      slider.scrollLeft -= 300;
+    }
   };
   const slideRight = () => {
     let slider = document.getElementById("slider" + rowID);
-    slider.scrollLeft += 300;
+    if (slider !== null) {
+      slider.scrollLeft += 300;
+    }
   };
 
   // 使用axios套件發送API請求，獲取資料。若請求成功，使用 response.data.results 取得回傳的結果，再使用 .filter 函式來篩選出有電影海報的資料顯示，最後使用 setMovies 函式更新狀態。
@@ -22,7 +34,9 @@ const Row = ({ title, fetchURL, rowID }) => {
       .get(fetchURL)
       .then((response) => {
         setMovies(
-          response.data.results.filter((movie) => movie.backdrop_path !== null)
+          response.data.results.filter(
+            (movie: MovieType) => movie.backdrop_path !== null
+          )
         );
       })
       .catch((error) => {

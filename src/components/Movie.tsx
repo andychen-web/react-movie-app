@@ -1,19 +1,19 @@
 import React, { useContext, useState } from "react";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { FavoritesContext } from "../context/FavoritesContext";
-
-const Movie = ({ movie }) => {
+import { MoviesProp } from "./Row";
+import { Favorite } from "../context/FavoritesContext";
+const Movie = ({ movie }: MoviesProp) => {
   const [favorites, setFavorites] = useContext(FavoritesContext);
-  const [like, setLike] = useState(
-    JSON.parse(localStorage.getItem(movie.id)) || false
-  );
+  const storedItem = localStorage.getItem(movie.id);
+  const [like, setLike] = useState(storedItem ? JSON.parse(storedItem) : false);
   const addFavorites = () => {
-    setLike((prevState) => {
+    setLike((prevState: boolean) => {
       const newLikeState = !prevState;
       localStorage.setItem(movie.id, JSON.stringify(newLikeState)); // save like state to local storage
       return newLikeState;
     });
-    setFavorites((prevFavorites) => {
+    setFavorites((prevFavorites: Favorite[]) => {
       const alreadyExists = prevFavorites.some(
         (favoriteMovie) => favoriteMovie.id === movie.id
       );
@@ -23,7 +23,12 @@ const Movie = ({ movie }) => {
         );
         return newFavorites;
       } else {
-        return [...prevFavorites, movie];
+        const newFavorite: Favorite = {
+          id: movie.id,
+          title: movie.title,
+          backdrop_path: movie.backdrop_path,
+        };
+        return [...prevFavorites, newFavorite];
       }
     });
   };
